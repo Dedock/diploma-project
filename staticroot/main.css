@@ -1,0 +1,142 @@
+.missingform {
+    background-color: pink !important;
+}
+.checking_attempt {
+    background-color: lightblue;
+}
+.wrong_attempt {
+    background-color: pink;
+}
+.correct_attempt {
+    background-color: lightgreen;
+}
+
+body {
+    padding-bottom: 200px;
+}
+
+.menu-button {
+    border: none;
+    padding: 0 5px;
+    transition: all 0.3s;
+}
+
+.menu-button:hover {
+    color: #0FA0CE;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#login, #signup {
+    background-color: #28a745;
+    color: white;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+#login:hover{
+    background-color: #28783c;
+}
+
+.user-name, .user-score, #user_name_display, #score_display {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+#user_name_display, #score_display {
+    color: #0FA0CE;
+}
+
+.error {
+    height: 15px;
+    color: red;
+}
+
+.home {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 1.1px;
+    transition: all 0.3s;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.solution{
+    display: none;
+}
+
+.intro-text {
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.lang-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+
+.lang-select {
+    margin-left: 10px;
+    margin-bottom: 0;
+    width: 150px;
+}
+
+.attempt {
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.code {
+    max-width: 100%;
+    min-height: 200px;
+}
+
+.questions {
+    display: none;
+}
+
+.question_button {
+    background-color: #a6beea;
+    transition: all 0.3s;
+    color: black;
+}
+
+.question_button:hover {
+    background-color: #0FA0CE;
+}
+
+#submit_attempt {
+    background-color: #28a745;
+    color: white;
+}
+
+.leader-bord {
+    display: none;
+}
+
+.menu-logged-in {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
