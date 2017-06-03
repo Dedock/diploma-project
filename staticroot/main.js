@@ -107,6 +107,10 @@ $(document).ready(function () {
         refresh_leader()
     });
 
+function validateUserName(input) {
+    var nameRegex = /^[a-zA-Z\-]+$/;
+    return nameRegex.test(input)
+}
 
     // --------------------------------------------------------- Actual stuff
     $("#login").click(function () {
@@ -166,17 +170,15 @@ $(document).ready(function () {
     $("#signup").click(function () {
         var username = $("#sign-up-username").val();
         var password = $("#sign-up-password").val();
-        if (username == '') {
-            $("#username").addClass('missingform');
-        } else {
-            $("#username").removeClass('missingform');
+        if (!validateUserName(username) || username.length < 2) {
+            $("#username").toggle('missingform');
+            $(".sign-up-user-error").html('User name must contain only alphabetical')
         }
-        if (password == '') {
-            $("#password").addClass('missingform');
-        } else {
-            $("#password").removeClass('missingform');
+        if (password == '' || password.length < 5) {
+            $("#password").toggle('missingform');
+            $(".sign-up-pass-error").html('Password must contain at least 6 characters')
         }
-        if (password != '' && username != '') {
+        if ((password.length > 5) && validateUserName(username) && username.length > 2) {
             // All data available
             var self = this;
             self.data = JSON.stringify({'username': username, 'password': password});
