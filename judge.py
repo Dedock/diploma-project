@@ -7,10 +7,6 @@ from threading import Thread
 
 
 def __thread_worker__():
-    """
-    Keep checking the job queue for a job and check it.
-    Place it in contest data when it is done.
-    """
     global job_queue
     while True:
         attempt = job_queue.get()

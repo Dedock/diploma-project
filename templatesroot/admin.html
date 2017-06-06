@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Local Judge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/normalize.css">
+    <link rel="stylesheet" href="/static/skeleton.css">
+    <link rel="stylesheet" href="/static/main.css">
+    <script src="/static/jquery.js"></script>
+    <script src='/static/admin.js'></script>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="admin-panel">
+            <h4>admin panel</h4>
+            <button class="menu-button" id='logout'>Logout</button>
+        </div>
+    </div>
+</div>
+<div class='container login'>
+    <div class='row' id='form_area'>
+        <div class='row login-form'>
+            <label class="user-name">User Name</label>
+            <input class='' type='text' id='username' placeholder='User Name'/>
+            <label class="password">Password</label>
+            <input class='' type='password' id='password' placeholder='********'/>
+            <span class="error login-error"></span>
+            <button id='login'>Login</button>
+        </div>
+    </div>
+</div>
+<div class="container wrapper hide">
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'intro')">Edit Intro</button>
+        <button class="tablinks" onclick="openTab(event, 'add-question')">Add Question</button>
+        <button class="tablinks" onclick="openTab(event, 'delete-question')">Delete Question</button>
+        <button class="tablinks" onclick="openTab(event, 'clearHistory')">Clear History</button>
+    </div>
 
+    <div id="intro" class="tabcontent">
+        <div class="content-wrapper"><span>Theme Intro</span>
+            <textarea name="text" id="intro-text"></textarea>
+            <button id="update" class="green-button">
+                add intro
+            </button>
+        </div>
+    </div>
+
+    <div id="add-question" class="tabcontent">
+        <div class="add-question">
+            <span>question number</span>
+            <input type="number" name="number" id="add-number">
+            <span>question description</span>
+            <textarea name="text" id="text"></textarea>
+            <span>question input</span>
+            <textarea name="inputs" id="inputs"></textarea>
+            <span>question output</span>
+            <textarea name="out" id="out"></textarea>
+
+            <button id="add" class="green-button">
+                add question
+            </button>
+        </div>
+    </div>
+
+    <div id="delete-question" class="tabcontent">
+        <div class="content-wrapper">
+            <span>question number</span>
+            <select name="number" id="delete-number">
+                % for qpk in questions:
+                <option value="{{qpk}}">{{qpk}}</option>
+                % end
+            </select>
+            <button id="delete" class="red-button">
+                delete
+            </button>
+        </div>
+    </div>
+
+    <div id="clearHistory" class="tabcontent">
+        <div class="content-wrapper"><span>Delete score history of all users?</span>
+            <button id="delete-history" class="red-button">
+                delete
+            </button>
+        </div>
+    </div>
+
+</div>
 </body>
+
 </html>

@@ -29,7 +29,43 @@ def static_server(path):
     return bottle.static_file(path, root=root)
 
 
+@app.get('/admin')
+def admin():
+    with tools.Contest() as contest:
+        d = {'questions': list(sorted(list(contest['questions'].keys()),
+                                      key=lambda x: int(x)))
+             }
+    return tools.render('admin.html', d)
+
 # ---------------------------------------------API
+@app.post('/add_question')
+def add_question():
+    number, text, inputs, out, token = jget('number', 'text', 'inputs', 'out', 'token')
+    user = tools.get_user(token)
+    if user['name'] == 'admin':
+        tools.add_question(number, text, inputs, out)
+
+@app.post('/delete_question')
+def delete_question():
+    number, token = jget('number', 'token')
+    user = tools.get_user(token)
+    if user['name'] == 'admin':
+        tools.delete_question(number)
+
+@app.post('/add_intro')
+def add_intro():
+    text, token = jget('text', 'token')
+    user = tools.get_user(token)
+    if user['name'] == 'admin':
+        tools.add_intro(text)
+
+@app.post('/clear_history')
+def clear_history():
+    token, = jget('token')
+    user = tools.get_user(token)
+    if user['name'] == 'admin':
+        tools.clear_history()
+
 @app.post('/login')
 def login():
     u, p = jget('username', 'password')

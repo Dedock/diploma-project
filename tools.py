@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import copy
 import bottle
 import random
 import pkgutil
@@ -55,7 +56,6 @@ def section(text):
     log('='*100)
     log('.'*25, text)
     log('='*100)
-
 
 def render(template, data=None):
     data = data if data is not None else dict()
@@ -244,6 +244,27 @@ def add_attempt_to_contest(attempt):
         attempt['stamp'] = str(time.time())
         contest['attempts'][attemptid] = attempt
 
+def add_question(number, text, inputs, out):
+    with Contest() as contest:
+        contest['questions'][number] = {}
+        contest['questions'][number]['statement'] = text
+        contest['questions'][number]['testcases'] = {}
+        contest['questions'][number]['testcases']['1'] = {}
+        contest['questions'][number]['testcases']['1']['in'] = inputs
+        contest['questions'][number]['testcases']['1']['out'] = out
+
+def delete_question(number):
+    with Contest() as contest:
+        del contest['questions'][number]
+
+def add_intro(text):
+    with Contest() as contest:
+        contest['intro']= text
+
+
+def clear_history():
+    with Contest() as contest:
+        contest['attempts']= {}
 
 def attempt_is_ok(qpk, lang, code):
     with Contest() as contest:
@@ -301,4 +322,5 @@ def get_user_score(user):
 def get_all_users():
     with Contest() as contest:
         users = list(contest['users'].keys())
+        if 'admin' in users: users.remove('admin')
     return users

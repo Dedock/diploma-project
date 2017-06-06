@@ -13,7 +13,6 @@ $(document).ready(function () {
     }
 
     function postit(url, data, success) {
-        console.log(url);
         $.ajax({
             type: 'POST',
             url: url,
@@ -197,6 +196,7 @@ function validateUserName(input) {
                             $('.solution').addClass('show')
                             $('.questions').addClass('show')
                         } else {
+
                             console.log('Login failed');
                         }
                     })
@@ -272,6 +272,5 @@ function validateUserName(input) {
                 table.append(person);
             }
         });
-
     }
 });   // Document ready

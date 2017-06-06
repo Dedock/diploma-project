@@ -133,6 +133,104 @@ body {
     display: none;
 }
 
+.admin-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.add-question {
+    display:flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+#number {
+    max-width: 200px;
+}
+
+.green-button {
+    max-width: 150px;
+    background-color: #28a745;
+    color: white;
+    transition: all 0.3s;
+}
+
+.green-button:hover {
+    background-color: #2c8e40;
+    color: white;
+}
+
+.red-button {
+    max-width: 150px;
+    background-color: #f66;
+    color: white;
+    transition: all 0.3s;
+}
+
+.red-button:hover {
+    background-color: #cf5353;
+    color: white;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    margin-bottom: 0;
+    border-radius: 0;
+    height: auto;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.content-wrapper {
+    display:flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 .hide {
     display: none;
 }
